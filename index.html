@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Enhanced Class Grade Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      max-width: 600px;
+      margin: auto;
+    }
+    .slider-container {
+      margin-bottom: 20px;
+    }
+    .slider-label {
+      margin-bottom: 5px;
+    }
+    #gradeDisplay {
+      font-size: 1.5em;
+      margin-top: 20px;
+      font-weight: bold;
+    }
+    button {
+      padding: 10px 15px;
+      font-size: 1em;
+    }
+  </style>
+</head>
+<body>
+  <h1>Enhanced Class Grade Calculator</h1>
+
+  <div class="slider-container">
+    <div class="slider-label">Homework (20%): <span id="homeworkValue">50</span></div>
+    <input type="range" id="homework" min="0" max="100" value="50">
+  </div>
+
+  <div class="slider-container">
+    <div class="slider-label">Quizzes (10%): <span id="quizzesValue">50</span></div>
+    <input type="range" id="quizzes" min="0" max="100" value="50">
+  </div>
+
+  <div class="slider-container">
+    <div class="slider-label">Discussions (10%): <span id="discussionsValue">50</span></div>
+    <input type="range" id="discussions" min="0" max="100" value="50">
+  </div>
+
+  <div class="slider-container">
+    <div class="slider-label">Practice Tests (10%): <span id="practiceTestsValue">50</span></div>
+    <input type="range" id="practiceTests" min="0" max="100" value="50">
+  </div>
+
+  <div class="slider-container">
+    <div class="slider-label">Highest Test 1 (12.5%): <span id="test1Value">50</span></div>
+    <input type="range" id="test1" min="0" max="100" value="50">
+  </div>
+
+  <div class="slider-container">
+    <div class="slider-label">Highest Test 2 (12.5%): <span id="test2Value">50</span></div>
+    <input type="range" id="test2" min="0" max="100" value="50">
+  </div>
+
+  <div class="slider-container">
+    <div class="slider-label">Highest Test 3 (12.5%): <span id="test3Value">50</span></div>
+    <input type="range" id="test3" min="0" max="100" value="50">
+  </div>
+
+  <div class="slider-container">
+    <div class="slider-label">Highest Test 4 (12.5%): <span id="test4Value">50</span></div>
+    <input type="range" id="test4" min="0" max="100" value="50">
+  </div>
+
+  <div id="gradeDisplay">Overall Grade: 0</div>
+  <button id="resetBtn">Reset</button>
+
+  <script>
+    // Get slider elements and their corresponding display spans
+    const homework = document.getElementById('homework');
+    const quizzes = document.getElementById('quizzes');
+    const discussions = document.getElementById('discussions');
+    const practiceTests = document.getElementById('practiceTests');
+    const test1 = document.getElementById('test1');
+    const test2 = document.getElementById('test2');
+    const test3 = document.getElementById('test3');
+    const test4 = document.getElementById('test4');
+
+    const homeworkValue = document.getElementById('homeworkValue');
+    const quizzesValue = document.getElementById('quizzesValue');
+    const discussionsValue = document.getElementById('discussionsValue');
+    const practiceTestsValue = document.getElementById('practiceTestsValue');
+    const test1Value = document.getElementById('test1Value');
+    const test2Value = document.getElementById('test2Value');
+    const test3Value = document.getElementById('test3Value');
+    const test4Value = document.getElementById('test4Value');
+
+    const gradeDisplay = document.getElementById('gradeDisplay');
+    const resetBtn = document.getElementById('resetBtn');
+
+    function updateGrade() {
+      // Update slider value displays
+      homeworkValue.textContent = homework.value;
+      quizzesValue.textContent = quizzes.value;
+      discussionsValue.textContent = discussions.value;
+      practiceTestsValue.textContent = practiceTests.value;
+      test1Value.textContent = test1.value;
+      test2Value.textContent = test2.value;
+      test3Value.textContent = test3.value;
+      test4Value.textContent = test4.value;
+
+      // Calculate overall grade using weighted values
+      const overallGrade = 
+        (homework.value * 0.20) +
+        (quizzes.value * 0.10) +
+        (discussions.value * 0.10) +
+        (practiceTests.value * 0.10) +
+        (test1.value * 0.125) +
+        (test2.value * 0.125) +
+        (test3.value * 0.125) +
+        (test4.value * 0.125);
+      
+      gradeDisplay.textContent = 'Overall Grade: ' + overallGrade.toFixed(2);
+    }
+
+    // Attach event listeners for real-time updates
+    const sliders = [homework, quizzes, discussions, practiceTests, test1, test2, test3, test4];
+    sliders.forEach(slider => slider.addEventListener('input', updateGrade));
+
+    // Reset functionality
+    resetBtn.addEventListener('click', () => {
+      sliders.forEach(slider => slider.value = 50);
+      updateGrade();
+    });
+
+    // Initialize display on page load
+    updateGrade();
+  </script>
+</body>
+</html>
