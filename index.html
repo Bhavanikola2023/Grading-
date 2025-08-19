@@ -37,7 +37,7 @@
   </div>
 
   <div class="slider-container">
-    <div class="slider-label">Quizzes (10%): <span id="quizzesValue">50</span></div>
+    <div class="slider-label">Quizzes (15%): <span id="quizzesValue">50</span></div>
     <input type="range" id="quizzes" min="0" max="100" value="50">
   </div>
 
@@ -47,7 +47,7 @@
   </div>
 
   <div class="slider-container">
-    <div class="slider-label">Practice Tests (10%): <span id="practiceTestsValue">50</span></div>
+    <div class="slider-label">Practice Tests (5%): <span id="practiceTestsValue">50</span></div>
     <input type="range" id="practiceTests" min="0" max="100" value="50">
   </div>
 
@@ -111,9 +111,9 @@
       // Calculate overall grade using weighted values
       const overallGrade = 
         (homework.value * 0.20) +
-        (quizzes.value * 0.10) +
+        (quizzes.value * 0.15) +
         (discussions.value * 0.10) +
-        (practiceTests.value * 0.10) +
+        (practiceTests.value * 0.5) +
         (test1.value * 0.125) +
         (test2.value * 0.125) +
         (test3.value * 0.125) +
@@ -137,3 +137,4 @@
   </script>
 </body>
 </html>
+
